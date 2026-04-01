@@ -26,7 +26,7 @@
             <div class="mb-3 divide-y divide-gray-100">
                 @foreach ($order->orderItems as $orderItem)
                     <div class="flex justify-between py-1.5 text-sm">
-                        <span class="text-gray-700">{{ $orderItem->item->name }} ×{{ $orderItem->qty }}</span>
+                        <span class="text-gray-700">{{ $orderItem->item->name }} ×{{ $orderItem->qty }}/{{ $orderItem->item->unit }}</span>
                         <span class="text-gray-900 font-medium">
                             Rp {{ number_format($orderItem->item->weekly_price * $orderItem->qty, 0, ',', '.') }}/minggu
                         </span>

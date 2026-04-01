@@ -129,6 +129,9 @@ new #[Title('Detail Tabungan')] class extends Component {
             <flux:button variant="ghost" icon="arrow-up-circle" wire:click="openForm('withdrawal')">
                 {{ __('Tarik') }}
             </flux:button>
+            <flux:button variant="ghost" icon="printer" :href="route('participants.savings-slip', $participant)">
+                {{ __('Cetak Slip') }}
+            </flux:button>
         </div>
     </div>
 

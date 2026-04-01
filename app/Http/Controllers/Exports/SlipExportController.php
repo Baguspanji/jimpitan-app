@@ -42,7 +42,7 @@ class SlipExportController extends Controller
         $totalOrder = 45 * $weeklyTotal;
         $remaining = $totalOrder - $totalPaid;
 
-        $filename = 'slip-'.str($participant->name)->slug().'-'.$order->period_name.'.pdf';
+        $filename = 'slip-'.str($participant->name)->slug().'-'.str($order->period_name)->slug().'.pdf';
 
         return Pdf::loadView('exports.slip', [
             'participant' => $participant,
@@ -53,6 +53,34 @@ class SlipExportController extends Controller
             'totalOrder' => $totalOrder,
             'remaining' => $remaining,
             'balance' => $participant->savingRecord?->balance ?? 0,
+        ])
+            ->setPaper('a5', 'portrait')
+            ->download($filename);
+    }
+
+    /**
+     * Generate and download the participant savings slip PDF.
+     */
+    public function savings(Participant $participant): Response
+    {
+        $participant->load([
+            'savingRecord',
+            'savingTransactions' => fn ($q) => $q->orderByDesc('transaction_date')->orderByDesc('id'),
+        ]);
+
+        $transactions = $participant->savingTransactions;
+        $totalDeposits = (int) $transactions->where('type', 'deposit')->sum('amount');
+        $totalWithdrawals = (int) $transactions->where('type', 'withdrawal')->sum('amount');
+        $balance = $participant->savingRecord?->balance ?? 0;
+
+        $filename = 'slip-tabungan-'.str($participant->name)->slug().'.pdf';
+
+        return Pdf::loadView('exports.savings-slip', [
+            'participant' => $participant,
+            'transactions' => $transactions,
+            'totalDeposits' => $totalDeposits,
+            'totalWithdrawals' => $totalWithdrawals,
+            'balance' => $balance,
         ])
             ->setPaper('a5', 'portrait')
             ->download($filename);

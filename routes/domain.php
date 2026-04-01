@@ -10,6 +10,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::livewire('participants', 'pages::participants.index')->name('participants.index');
     Route::get('participants/{participant}/slip', [SlipExportController::class, 'show'])->name('participants.slip');
     Route::get('participants/{participant}/slip/{order}', [SlipExportController::class, 'download'])->name('participants.slip.download');
+    Route::get('participants/{participant}/savings-slip', [SlipExportController::class, 'savings'])->name('participants.savings-slip');
 
     Route::livewire('categories', 'pages::categories.index')->name('categories.index');
 

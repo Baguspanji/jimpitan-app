@@ -16,4 +16,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::livewire('savings', 'pages::savings.index')->name('savings.index');
 
     Route::livewire('savings/{participant}', 'pages::savings.show')->name('savings.show');
+
+    Route::livewire('reports/keuangan', 'pages::reports.keuangan')->name('reports.keuangan');
+
+    Route::livewire('reports/belanja', 'pages::reports.belanja')->name('reports.belanja');
+
+    Route::livewire('reports/tabungan', 'pages::reports.tabungan')->name('reports.tabungan');
 });

@@ -37,6 +37,18 @@
                         {{ __('Tabungan') }}
                     </flux:sidebar.item>
                 </flux:sidebar.group>
+
+                <flux:sidebar.group :heading="__('Laporan')" class="grid">
+                    <flux:sidebar.item icon="chart-bar" :href="route('reports.keuangan')" :current="request()->routeIs('reports.keuangan')" wire:navigate>
+                        {{ __('Keuangan') }}
+                    </flux:sidebar.item>
+                    <flux:sidebar.item icon="shopping-cart" :href="route('reports.belanja')" :current="request()->routeIs('reports.belanja')" wire:navigate>
+                        {{ __('Belanja') }}
+                    </flux:sidebar.item>
+                    <flux:sidebar.item icon="chart-pie" :href="route('reports.tabungan')" :current="request()->routeIs('reports.tabungan')" wire:navigate>
+                        {{ __('Tabungan') }}
+                    </flux:sidebar.item>
+                </flux:sidebar.group>
             </flux:sidebar.nav>
 
             <flux:spacer />

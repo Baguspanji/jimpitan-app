@@ -90,18 +90,18 @@
 ## Minggu 5 — Laporan, Export & Finalisasi
 
 ### Modul Laporan
-- [ ] Laporan rekap keuangan (total masuk per minggu & keseluruhan)
-- [ ] Laporan rekap belanja/kulakan (total kuantitas per barang)
-- [ ] Laporan rekap tabungan (saldo & riwayat per periode)
+- [x] Laporan rekap keuangan (total masuk per minggu & keseluruhan)
+- [x] Laporan rekap belanja/kulakan (total kuantitas per barang)
+- [x] Laporan rekap tabungan (saldo & riwayat per periode)
 - [ ] Ekspor laporan ke PDF
 - [ ] Ekspor laporan ke Excel
 
 ### Testing & Bug Fixing
-- [ ] Feature test autentikasi
+- [x] Feature test autentikasi
 - [x] Feature test CRUD peserta
 - [x] Feature test CRUD barang & katalog
 - [x] Feature test order & keranjang
 - [x] Feature test pelacakan angsuran
 - [x] Feature test tabungan (setoran, penarikan, validasi saldo)
-- [ ] Feature test laporan
+- [x] Feature test laporan
 - [ ] Bug fixing & polish UI

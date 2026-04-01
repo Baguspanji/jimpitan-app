@@ -76,7 +76,7 @@ new #[Title('Angsuran')] class extends Component {
 }
 ?>
 
-<div class="flex flex-col gap-6">
+<div class="flex flex-col gap-6" x-data="{ pendingWeek: null, pendingPaid: false }">
 
     {{-- Header --}}
     <div class="flex items-center justify-between">
@@ -129,9 +129,7 @@ new #[Title('Angsuran')] class extends Component {
                         $paid = isset($this->installmentMap[$week]);
                     @endphp
                     <button
-                        wire:click="toggleInstallment({{ $this->orderModel->id }}, {{ $week }})"
-                        wire:loading.attr="disabled"
-                        wire:target="toggleInstallment({{ $this->orderModel->id }}, {{ $week }})"
+                        x-on:click="pendingWeek = {{ $week }}; pendingPaid = {{ $paid ? 'true' : 'false' }}; $flux.modal('confirm-installment').show()"
                         class="
                             flex flex-col items-center justify-center w-16 h-16 rounded-xl border-2 text-sm font-semibold
                             transition-colors cursor-pointer
@@ -171,6 +169,46 @@ new #[Title('Angsuran')] class extends Component {
                 </span>
             </div>
         </div>
+
+        {{-- Confirmation Modal --}}
+        <flux:modal name="confirm-installment" class="min-w-88">
+            <div class="space-y-6">
+                <div>
+                    <flux:heading size="lg" x-text="pendingPaid ? 'Hapus Angsuran' : 'Konfirmasi Angsuran'"></flux:heading>
+                    <flux:text class="mt-2 text-sm text-zinc-500">
+                        <template x-if="!pendingPaid">
+                            <span>Tandai minggu ke-<span x-text="pendingWeek"></span> sebagai <strong>lunas</strong>?</span>
+                        </template>
+                        <template x-if="pendingPaid">
+                            <span>Hapus tanda lunas untuk minggu ke-<span x-text="pendingWeek"></span>?</span>
+                        </template>
+                    </flux:text>
+                </div>
+                <div class="flex gap-2 justify-end">
+                    <flux:modal.close>
+                        <flux:button variant="ghost">{{ __('Batal') }}</flux:button>
+                    </flux:modal.close>
+                    <flux:button
+                        x-show="!pendingPaid"
+                        variant="primary"
+                        wire:loading.attr="disabled"
+                        wire:target="toggleInstallment"
+                        x-on:click="$wire.toggleInstallment({{ $this->orderModel->id }}, pendingWeek); $flux.modal('confirm-installment').close()"
+                    >
+                        {{ __('Konfirmasi') }}
+                    </flux:button>
+                    <flux:button
+                        x-show="pendingPaid"
+                        variant="danger"
+                        wire:loading.attr="disabled"
+                        wire:target="toggleInstallment"
+                        x-on:click="$wire.toggleInstallment({{ $this->orderModel->id }}, pendingWeek); $flux.modal('confirm-installment').close()"
+                    >
+                        {{ __('Hapus') }}
+                    </flux:button>
+                </div>
+            </div>
+        </flux:modal>
     @else
         <div class="text-center py-12 text-zinc-400">
             {{ __('Pilih order di atas untuk menampilkan kartu angsuran.') }}

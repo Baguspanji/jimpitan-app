@@ -49,41 +49,41 @@
 - [x] Fitur hapus kategori
 
 ### Modul Barang
-- [ ] Halaman daftar barang (dengan filter kategori)
-- [ ] Form tambah barang reguler (Nama, Satuan, Harga/Minggu, Kategori)
-- [ ] Form tambah paket spesial (relasi ke barang reguler + field bonus)
-- [ ] Form edit barang/paket
-- [ ] Fitur hapus barang/paket
+- [x] Halaman daftar barang (dengan filter kategori)
+- [x] Form tambah barang reguler (Nama, Satuan, Harga/Minggu, Kategori)
+- [x] Form tambah paket spesial (relasi ke barang reguler + field bonus)
+- [x] Form edit barang/paket
+- [x] Fitur hapus barang/paket
 
 ### Modul Pendaftaran Keranjang (Order)
-- [ ] Halaman pilih peserta & tambah ke keranjang
-- [ ] Form pilih barang/paket untuk peserta
-- [ ] Kalkulasi otomatis total angsuran per minggu
-- [ ] Form edit order peserta
-- [ ] Fitur hapus order
+- [x] Halaman pilih peserta & tambah ke keranjang
+- [x] Form pilih barang/paket untuk peserta
+- [x] Kalkulasi otomatis total angsuran per minggu
+- [x] Form edit order peserta
+- [x] Fitur hapus order
 
 ---
 
 ## Minggu 3 — Pelacakan Angsuran
 
 ### Modul Angsuran
-- [ ] Tampilan grid peserta vs Minggu 1–45 (tabel Excel-like)
-- [ ] Fitur centang/input nominal setoran per minggu (Livewire, tanpa reload)
-- [ ] Kalkulasi otomatis status lunas / tunggakan per peserta
-- [ ] Indikator visual status pembayaran (lunas, sebagian, belum bayar)
-- [ ] Filter/cari peserta di halaman grid
+- [x] Tampilan grid peserta vs Minggu 1–45 (tabel Excel-like)
+- [x] Fitur centang/input nominal setoran per minggu (Livewire, tanpa reload)
+- [x] Kalkulasi otomatis status lunas / tunggakan per peserta
+- [x] Indikator visual status pembayaran (lunas, sebagian, belum bayar)
+- [x] Filter/cari peserta di halaman grid
 
 ---
 
 ## Minggu 4 — Modul Tabungan
 
 ### Modul Tabungan Peserta
-- [ ] Halaman ringkasan saldo tabungan seluruh peserta
-- [ ] Halaman riwayat transaksi per peserta
-- [ ] Form setoran tabungan (debit)
-- [ ] Form penarikan tabungan (kredit) dengan validasi saldo tidak negatif
-- [ ] Kalkulasi saldo terkini otomatis dari transaksi
-- [ ] Pencatatan `created_by` (admin yang input)
+- [x] Halaman ringkasan saldo tabungan seluruh peserta
+- [x] Halaman riwayat transaksi per peserta
+- [x] Form setoran tabungan (debit)
+- [x] Form penarikan tabungan (kredit) dengan validasi saldo tidak negatif
+- [x] Kalkulasi saldo terkini otomatis dari transaksi
+- [x] Pencatatan `created_by` (admin yang input)
 
 ---
 
@@ -98,10 +98,10 @@
 
 ### Testing & Bug Fixing
 - [ ] Feature test autentikasi
-- [ ] Feature test CRUD peserta
-- [ ] Feature test CRUD barang & katalog
-- [ ] Feature test order & keranjang
-- [ ] Feature test pelacakan angsuran
-- [ ] Feature test tabungan (setoran, penarikan, validasi saldo)
+- [x] Feature test CRUD peserta
+- [x] Feature test CRUD barang & katalog
+- [x] Feature test order & keranjang
+- [x] Feature test pelacakan angsuran
+- [x] Feature test tabungan (setoran, penarikan, validasi saldo)
 - [ ] Feature test laporan
 - [ ] Bug fixing & polish UI

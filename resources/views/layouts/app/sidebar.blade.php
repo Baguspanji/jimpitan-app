@@ -24,6 +24,18 @@
                     <flux:sidebar.item icon="tag" :href="route('categories.index')" :current="request()->routeIs('categories.*')" wire:navigate>
                         {{ __('Kategori') }}
                     </flux:sidebar.item>
+                    <flux:sidebar.item icon="shopping-bag" :href="route('items.index')" :current="request()->routeIs('items.*')" wire:navigate>
+                        {{ __('Barang') }}
+                    </flux:sidebar.item>
+                    <flux:sidebar.item icon="clipboard-document-list" :href="route('orders.index')" :current="request()->routeIs('orders.*')" wire:navigate>
+                        {{ __('Order') }}
+                    </flux:sidebar.item>
+                    <flux:sidebar.item icon="calendar-days" :href="route('installments.index')" :current="request()->routeIs('installments.*')" wire:navigate>
+                        {{ __('Angsuran') }}
+                    </flux:sidebar.item>
+                    <flux:sidebar.item icon="banknotes" :href="route('savings.index')" :current="request()->routeIs('savings.*')" wire:navigate>
+                        {{ __('Tabungan') }}
+                    </flux:sidebar.item>
                 </flux:sidebar.group>
             </flux:sidebar.nav>
 

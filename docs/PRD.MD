@@ -46,9 +46,17 @@ Saat ini, aplikasi dirancang untuk *Single Role*:
 * **Fitur Input Setoran:** Admin dapat memberikan tanda centang (atau input nominal jika bayar lebih) pada kolom minggu tertentu jika warga menyetor uang.
 * **Status Lunas/Tunggakan:** Sistem otomatis menghitung berapa kali warga sudah membayar dan berapa sisa angsurannya.
 
-### 3.6. Modul Laporan & Rekapitulasi
+### 3.6. Modul Tabungan Peserta
+* **Saldo Tabungan:** Setiap peserta memiliki saldo tabungan pribadi yang dapat dilihat oleh admin.
+* **Setoran Tabungan:** Admin dapat mencatat setoran (debit) tabungan dari peserta kapan saja, tidak terikat siklus angsuran mingguan.
+* **Penarikan Tabungan:** Admin dapat mencatat penarikan (kredit) tabungan atas permintaan peserta, sepanjang saldo mencukupi. Sistem memvalidasi agar saldo tidak negatif.
+* **Riwayat Transaksi:** Tampilan daftar kronologis semua transaksi tabungan (setoran & penarikan) per peserta, lengkap dengan tanggal dan keterangan.
+* **Ringkasan Tabungan:** Tampilan rekap saldo seluruh peserta dalam satu halaman.
+
+### 3.7. Modul Laporan & Rekapitulasi
 * **Rekap Keuangan:** Laporan total uang yang masuk per minggu dan total keseluruhan.
 * **Rekap Belanja (Kulakan):** Laporan otomatis yang menjumlahkan kuantitas setiap barang yang dipesan oleh seluruh peserta (Misal: Total Beras 64 yang harus dibeli = 1.000 Kg). Dapat diekspor ke PDF/Excel.
+* **Rekap Tabungan:** Laporan total saldo tabungan seluruh peserta dan riwayat transaksi per periode. Dapat diekspor ke PDF/Excel.
 
 ---
 
@@ -61,7 +69,7 @@ Berikut bayangan *Migration* dan relasinya dalam Laravel:
     * `id`, `name` (Sembako, Snack, dll)
 * `items`
     * `id`, `category_id` (FK), `name`, `unit` (Kg, Dos), `weekly_price`, `type` (regular / package), `bonus_desc` (nullable)
-* `item_package` (Pivot table untuk mendefinisikan isi paket - *Opsional jika paket tidak perlu direlasikan ke stok barang individual*)
+* `item_packages` (Pivot table untuk mendefinisikan isi paket - *Opsional jika paket tidak perlu direlasikan ke stok barang individual*)
     * `package_id` (FK items), `item_id` (FK items)
 * `participants`
     * `id`, `name`, `phone`, `address`
@@ -71,10 +79,15 @@ Berikut bayangan *Migration* dan relasinya dalam Laravel:
     * `id`, `order_id` (FK), `item_id` (FK), `qty`
 * `installments` (Catatan pembayaran)
     * `id`, `order_id` (FK), `week_number` (1-45), `amount_paid`, `payment_date`
+* `savings` (Rekap saldo tabungan per peserta)
+    * `id`, `participant_id` (FK), `balance` (saldo terkini, derived dari transaksi)
+* `saving_transactions` (Riwayat transaksi tabungan)
+    * `id`, `participant_id` (FK), `type` (`deposit` / `withdrawal`), `amount`, `note` (nullable), `transaction_date`, `created_by` (FK users)
 
 ## 5. Timeline Pengembangan (Estimasi Kasar untuk 1 Developer)
 
 * **Minggu 1:** Setup Laravel, Pembuatan Database Migrations, Models, dan Relasi (Eloquent). Pembuatan Auth dan CRUD Kategori & Peserta.
 * **Minggu 2:** Pembuatan CRUD Katalog Barang & Paket. Pembuatan fitur Pendaftaran Keranjang (Order).
 * **Minggu 3:** Pengembangan Antarmuka *Grid* Pelacakan Angsuran (Bagian paling kompleks, disarankan menggunakan Livewire untuk interaktivitas tanpa *reload* halaman).
-* **Minggu 4:** Pembuatan Laporan Rekapitulasi (Keuangan & Kulakan), ekspor ke PDF, *Testing*, dan *Bug Fixing*.
+* **Minggu 4:** Pengembangan Modul Tabungan Peserta (setoran, penarikan, riwayat transaksi).
+* **Minggu 5:** Pembuatan Laporan Rekapitulasi (Keuangan, Kulakan & Tabungan), ekspor ke PDF, *Testing*, dan *Bug Fixing*.

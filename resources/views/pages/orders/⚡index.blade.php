@@ -245,7 +245,9 @@ new #[Title('Order Undian')] class extends Component {
                             @endforeach
                         </flux:select>
 
-                        <flux:input wire:model.live="orderLines.{{ $i }}.qty" type="number" min="1" class="w-20" />
+                        <div class="w-20">
+                            <flux:input wire:model.live="orderLines.{{ $i }}.qty" type="number" min="1" />
+                        </div>
 
                         <flux:button
                             type="button"

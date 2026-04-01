@@ -128,7 +128,7 @@ new #[Title('Laporan Belanja (Kulakan)')] class extends Component {
                     <flux:table.cell>{{ $row->total_orders }} peserta</flux:table.cell>
                     <flux:table.cell>
                         <flux:badge color="amber" size="sm">
-                            {{ number_format($row->total_qty) }} {{ $row->item->unit }}
+                            {{ number_format($row->total_qty) }}
                         </flux:badge>
                     </flux:table.cell>
                 </flux:table.row>

@@ -68,7 +68,7 @@
                     <td>{{ $row->item->unit }}</td>
                     <td>{{ $row->total_orders }} peserta</td>
                     <td>
-                        <span class="badge badge-amber">{{ number_format($row->total_qty) }} {{ $row->item->unit }}</span>
+                        <span class="badge badge-amber">{{ number_format($row->total_qty) }}</span>
                     </td>
                 </tr>
             @empty

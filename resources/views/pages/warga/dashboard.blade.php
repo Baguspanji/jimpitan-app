@@ -1,11 +1,20 @@
 <x-layouts::warga :title="$participant->name">
     {{-- Identity card --}}
-    <div class="bg-white rounded-xl border border-gray-200 p-4 mb-4">
-        <h1 class="text-lg font-semibold text-gray-900">{{ $participant->name }}</h1>
-        <p class="text-sm text-gray-500 mt-1">{{ $maskedPhone }}</p>
-        @if ($participant->address)
-            <p class="text-sm text-gray-500">{{ $participant->address }}</p>
-        @endif
+    <div class="bg-white rounded-2xl border border-emerald-100 shadow-sm p-4 mb-4">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center shrink-0">
+                <svg class="w-5 h-5 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                </svg>
+            </div>
+            <div>
+                <h1 class="text-base font-bold text-gray-900">{{ $participant->name }}</h1>
+                <p class="text-sm text-gray-500">{{ $maskedPhone }}</p>
+                @if ($participant->address)
+                    <p class="text-xs text-gray-400">{{ $participant->address }}</p>
+                @endif
+            </div>
+        </div>
     </div>
 
     {{-- Orders --}}
@@ -19,8 +28,8 @@
             $progressPct = $totalOrder > 0 ? min(100, round($paidCount / 45 * 100)) : 0;
         @endphp
 
-        <div class="bg-white rounded-xl border border-gray-200 p-4 mb-4">
-            <h2 class="font-semibold text-gray-800 mb-3">{{ __('Periode :name', ['name' => $order->period_name]) }}</h2>
+        <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-4 mb-4">
+            <h2 class="font-semibold text-emerald-700 mb-3">{{ __('Periode :name', ['name' => $order->period_name]) }}</h2>
 
             {{-- Items --}}
             <div class="mb-3 divide-y divide-gray-100">
@@ -40,8 +49,8 @@
                     <span>{{ $paidCount }}/45 {{ __('minggu') }}</span>
                     <span>{{ $progressPct }}%</span>
                 </div>
-                <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
-                    <div class="h-full bg-green-500 rounded-full transition-all" style="width: {{ $progressPct }}%"></div>
+                <div class="h-2 bg-gray-100 rounded-full overflow-hidden">
+                    <div class="h-full bg-emerald-500 rounded-full transition-all" style="width: {{ $progressPct }}%"></div>
                 </div>
             </div>
 
@@ -50,7 +59,7 @@
                 @for ($w = 1; $w <= 45; $w++)
                     @php $paid = $order->installments->contains('week_number', $w); @endphp
                     <div
-                        class="w-4 h-4 rounded-sm {{ $paid ? 'bg-green-500' : 'bg-gray-200' }}"
+                        class="w-4 h-4 rounded-sm {{ $paid ? 'bg-emerald-500' : 'bg-gray-100' }}"
                         title="{{ __('Minggu :n', ['n' => $w]) }}"
                     ></div>
                 @endfor
@@ -58,34 +67,34 @@
 
             {{-- Financial summary --}}
             <div class="mt-3 grid grid-cols-3 gap-2 text-center">
-                <div class="bg-gray-50 rounded-lg p-2">
-                    <p class="text-xs text-gray-500">{{ __('Total') }}</p>
-                    <p class="text-sm font-semibold text-gray-900">Rp {{ number_format($totalOrder, 0, ',', '.') }}</p>
+                <div class="bg-gray-50 rounded-xl p-2">
+                    <p class="text-xs text-gray-400">{{ __('Total') }}</p>
+                    <p class="text-sm font-bold text-gray-700">Rp {{ number_format($totalOrder, 0, ',', '.') }}</p>
                 </div>
-                <div class="bg-green-50 rounded-lg p-2">
-                    <p class="text-xs text-gray-500">{{ __('Dibayar') }}</p>
-                    <p class="text-sm font-semibold text-green-700">Rp {{ number_format($totalPaid, 0, ',', '.') }}</p>
+                <div class="bg-emerald-50 rounded-xl p-2">
+                    <p class="text-xs text-gray-400">{{ __('Dibayar') }}</p>
+                    <p class="text-sm font-bold text-emerald-700">Rp {{ number_format($totalPaid, 0, ',', '.') }}</p>
                 </div>
-                <div class="bg-orange-50 rounded-lg p-2">
-                    <p class="text-xs text-gray-500">{{ __('Sisa') }}</p>
-                    <p class="text-sm font-semibold text-orange-700">Rp {{ number_format($remaining, 0, ',', '.') }}</p>
+                <div class="bg-amber-50 rounded-xl p-2">
+                    <p class="text-xs text-gray-400">{{ __('Sisa') }}</p>
+                    <p class="text-sm font-bold text-amber-700">Rp {{ number_format($remaining, 0, ',', '.') }}</p>
                 </div>
             </div>
         </div>
     @empty
-        <div class="bg-white rounded-xl border border-gray-200 p-4 mb-4 text-center text-gray-500 text-sm">
+        <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-4 mb-4 text-center text-gray-400 text-sm">
             {{ __('Belum ada data order.') }}
         </div>
     @endforelse
 
     {{-- Savings --}}
-    <div class="bg-white rounded-xl border border-gray-200 p-4 mb-4">
-        <h2 class="font-semibold text-gray-800 mb-3">{{ __('Tabungan') }}</h2>
+    <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-4 mb-4">
+        <h2 class="font-semibold text-emerald-700 mb-3">{{ __('Tabungan') }}</h2>
 
         @if ($participant->savingRecord)
-            <div class="bg-blue-50 rounded-lg p-3 mb-3 text-center">
-                <p class="text-xs text-gray-500">{{ __('Saldo') }}</p>
-                <p class="text-xl font-bold text-blue-700">
+            <div class="bg-emerald-50 rounded-xl p-3 mb-3 text-center">
+                <p class="text-xs text-gray-400">{{ __('Saldo') }}</p>
+                <p class="text-xl font-bold text-emerald-700">
                     Rp {{ number_format($participant->savingRecord->balance, 0, ',', '.') }}
                 </p>
             </div>
@@ -115,7 +124,9 @@
     </div>
 
     {{-- Footer --}}
-    <p class="text-center text-xs text-gray-400 mt-6">
-        {{ __('Link berlaku sampai') }} {{ $expiresAt->translatedFormat('d F Y, H:i') }}
-    </p>
+    <div class="mt-6 bg-amber-50 border border-amber-100 rounded-xl px-4 py-2.5 text-center">
+        <p class="text-xs text-amber-700">
+            🔒 {{ __('Link berlaku sampai') }} {{ $expiresAt->translatedFormat('d F Y, H:i') }}
+        </p>
+    </div>
 </x-layouts::warga>

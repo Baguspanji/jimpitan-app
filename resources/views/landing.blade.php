@@ -28,6 +28,7 @@
                 <div class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-600">
                     <a href="#fitur" class="hover:text-emerald-600 transition-colors">Fitur</a>
                     <a href="#cara-kerja" class="hover:text-emerald-600 transition-colors">Cara Kerja</a>
+                    <a href="#kalkulator" class="hover:text-amber-500 transition-colors">Kalkulator</a>
                     <a href="#testimoni" class="hover:text-emerald-600 transition-colors">Testimoni</a>
                     <a href="#kontak" class="hover:text-emerald-600 transition-colors">Hubungi Kami</a>
                 </div>
@@ -248,6 +249,107 @@
             </div>
         </section>
 
+        {{-- ===================== SECTION KALKULATOR ===================== --}}
+        <section id="kalkulator" class="py-20 md:py-28 bg-white">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+
+                    {{-- Teks --}}
+                    <div class="flex flex-col gap-6">
+                        <div class="inline-flex items-center gap-2 bg-amber-100 text-amber-700 text-sm font-semibold px-4 py-1.5 rounded-full w-fit">
+                            🧮 Tools Gratis untuk Warga
+                        </div>
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
+                            Simulasikan Angsuranmu <span class="text-amber-500">Sebelum Mendaftar</span>
+                        </h2>
+                        <p class="text-gray-600 leading-relaxed">
+                            Tidak yakin mau pilih barang apa? Gunakan <strong>Kalkulator Jimpitan</strong> kami — jelajahi katalog lengkap (Sembako, Snack, Minuman, Paket Spesial), pilih item yang diinginkan, dan lihat estimasi total angsuran mingguanmu secara instan.
+                        </p>
+
+                        {{-- Highlights --}}
+                        <ul class="flex flex-col gap-3">
+                            <li class="flex items-start gap-3">
+                                <span class="w-6 h-6 bg-amber-100 rounded-full flex items-center justify-center shrink-0 mt-0.5 text-sm">🛒</span>
+                                <div>
+                                    <p class="font-semibold text-gray-800 text-sm">49 Pilihan Barang</p>
+                                    <p class="text-xs text-gray-500">Sembako, Snack, Minuman, hingga Paket Spesial dengan bonus.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="w-6 h-6 bg-amber-100 rounded-full flex items-center justify-center shrink-0 mt-0.5 text-sm">📊</span>
+                                <div>
+                                    <p class="font-semibold text-gray-800 text-sm">Estimasi Otomatis</p>
+                                    <p class="text-xs text-gray-500">Total angsuran mingguan & nilai total setelah 45× pembayaran dihitung langsung.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="w-6 h-6 bg-amber-100 rounded-full flex items-center justify-center shrink-0 mt-0.5 text-sm">🆓</span>
+                                <div>
+                                    <p class="font-semibold text-gray-800 text-sm">Sepenuhnya Gratis</p>
+                                    <p class="text-xs text-gray-500">Tidak perlu login. Langsung akses dan simulasikan kapan saja.</p>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <a
+                            href="https://kalkulator.kodebagus.com/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="inline-flex items-center justify-center gap-2 bg-amber-400 hover:bg-amber-500 text-gray-900 font-bold px-6 py-3.5 rounded-xl shadow-md shadow-amber-100 transition-all hover:shadow-lg hover:-translate-y-0.5 w-fit"
+                        >
+                            Buka Kalkulator Jimpitan
+                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                            </svg>
+                        </a>
+                        <p class="text-xs text-gray-400">Dibuka di tab baru. Cocok untuk warga Dsn. Tegalan – Bakalan – Purwosari.</p>
+                    </div>
+
+                    {{-- Preview card --}}
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-amber-50 to-emerald-50 rounded-3xl blur-xl scale-95 opacity-70"></div>
+                        <div class="relative bg-white rounded-2xl border border-gray-100 shadow-xl overflow-hidden">
+                            {{-- Header card --}}
+                            <div class="bg-gradient-to-r from-emerald-600 to-emerald-500 px-5 py-4 text-white">
+                                <p class="font-bold text-base">🧮 Kalkulator Jimpitan</p>
+                                <p class="text-xs text-emerald-100 mt-0.5">Periode 2026 – 2027 · Dsn. Tegalan</p>
+                            </div>
+                            {{-- Simulasi items --}}
+                            <div class="px-5 py-4 flex flex-col gap-3">
+                                @foreach ([['Beras 25 Kg', 'Sembako', 'Rp 8.300'], ['Bimoli 5L', 'Sembako', 'Rp 3.500'], ['Gula 5 Kg', 'Sembako', 'Rp 4.500'], ['Kongguan Besar', 'Snack', 'Rp 3.000'], ['Teh Gelas 2 Dos', 'Minuman', 'Rp 1.300']] as [$nama, $kat, $harga])
+                                    <div class="flex items-center justify-between text-sm">
+                                        <div class="flex items-center gap-2">
+                                            <span class="w-2 h-2 rounded-full {{ $kat === 'Sembako' ? 'bg-emerald-400' : ($kat === 'Snack' ? 'bg-amber-400' : 'bg-blue-400') }}"></span>
+                                            <span class="text-gray-700">{{ $nama }}</span>
+                                            <span class="text-xs text-gray-400 bg-gray-50 px-1.5 py-0.5 rounded">{{ $kat }}</span>
+                                        </div>
+                                        <span class="font-semibold text-gray-800">{{ $harga }}/mgg</span>
+                                    </div>
+                                @endforeach
+                                <div class="border-t border-dashed border-gray-100 pt-3 mt-1">
+                                    <div class="flex justify-between text-sm font-bold">
+                                        <span class="text-gray-600">Total Angsuran</span>
+                                        <span class="text-emerald-600">Rp 20.600/minggu</span>
+                                    </div>
+                                    <div class="flex justify-between text-xs text-gray-400 mt-1">
+                                        <span>Estimasi total (45×)</span>
+                                        <span>Rp 927.000</span>
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- CTA di dalam card --}}
+                            <div class="px-5 pb-5">
+                                <a href="https://kalkulator.kodebagus.com/" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-amber-400 hover:bg-amber-500 text-gray-900 font-semibold text-sm py-2.5 rounded-xl transition-colors">
+                                    Coba Simulasi Saya →
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
         {{-- ===================== SECTION 4: TESTIMONI ===================== --}}
         <section id="testimoni" class="py-20 md:py-28 bg-emerald-700">
             <div class="max-w-6xl mx-auto px-6">
@@ -314,6 +416,7 @@
                             <li><a href="{{ route('home') }}" class="hover:text-emerald-400 transition-colors">Beranda</a></li>
                             <li><a href="#fitur" class="hover:text-emerald-400 transition-colors">Fitur</a></li>
                             <li><a href="#cara-kerja" class="hover:text-emerald-400 transition-colors">Cara Kerja</a></li>
+                            <li><a href="#kalkulator" class="hover:text-amber-400 transition-colors">Kalkulator Jimpitan</a></li>
                             <li><a href="#kontak" class="hover:text-emerald-400 transition-colors">Hubungi Kami</a></li>
                         </ul>
                     </div>

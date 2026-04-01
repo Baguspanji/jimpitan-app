@@ -3,8 +3,7 @@
 use App\Http\Controllers\WargaDashboardController;
 use Illuminate\Support\Facades\Route;
 
-// Route::view('/', 'welcome')->name('home');
-Route::redirect('/', '/dashboard')->name('home');
+Route::view('/', 'landing')->name('home');
 
 Route::get('/w/{token}', [WargaDashboardController::class, 'show'])->name('warga.dashboard');
 

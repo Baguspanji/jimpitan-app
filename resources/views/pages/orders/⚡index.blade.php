@@ -237,11 +237,11 @@ new #[Title('Order Undian')] class extends Component {
                 @foreach ($orderLines as $i => $line)
                     <div class="flex items-center gap-2" wire:key="line-{{ $i }}">
                         <flux:select wire:model.live="orderLines.{{ $i }}.item_id" class="flex-1">
-                            <flux:select.option value="">{{ __('Pilih barang...') }}</flux:select.option>
+                            <option value="">{{ __('Pilih barang...') }}</option>
                             @foreach ($this->items as $item)
-                                <flux:select.option value="{{ $item->id }}">
+                                <option value="{{ $item->id }}">
                                     {{ $item->name }} - Rp {{ number_format($item->weekly_price, 0, ',', '.') }}/minggu
-                                </flux:select.option>
+                                </option>
                             @endforeach
                         </flux:select>
 
@@ -277,7 +277,7 @@ new #[Title('Order Undian')] class extends Component {
                 <flux:button type="button" variant="ghost" wire:click="$set('showFormModal', false)">
                     {{ __('Batal') }}
                 </flux:button>
-                <flux:button type="submit" variant="primary">
+                <flux:button type="submit" variant="primary" wire:loading.attr="disabled">
                     {{ __('Simpan') }}
                 </flux:button>
             </div>
@@ -291,7 +291,7 @@ new #[Title('Order Undian')] class extends Component {
             <flux:text>{{ __('Yakin ingin menghapus order ini beserta seluruh data angsurannya?') }}</flux:text>
             <div class="flex justify-end gap-3">
                 <flux:button variant="ghost" wire:click="$set('showDeleteModal', false)">{{ __('Batal') }}</flux:button>
-                <flux:button variant="danger" wire:click="delete">{{ __('Hapus') }}</flux:button>
+                <flux:button variant="danger" wire:click="delete" wire:loading.attr="disabled" wire:target="delete">{{ __('Hapus') }}</flux:button>
             </div>
         </div>
     </flux:modal>

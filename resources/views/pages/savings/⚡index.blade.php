@@ -68,6 +68,7 @@ new #[Title('Tabungan Peserta')] class extends Component {
                             size="sm"
                             icon="banknotes"
                             :href="route('savings.show', $participant)"
+                            wire:navigate
                         >
                             {{ __('Kelola') }}
                         </flux:button>

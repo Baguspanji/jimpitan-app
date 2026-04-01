@@ -134,7 +134,7 @@ new #[Title('Kategori')] class extends Component {
                 <flux:button type="button" variant="ghost" wire:click="$set('showFormModal', false)">
                     {{ __('Batal') }}
                 </flux:button>
-                <flux:button type="submit" variant="primary">
+                <flux:button type="submit" variant="primary" wire:loading.attr="disabled">
                     {{ __('Simpan') }}
                 </flux:button>
             </div>
@@ -150,7 +150,7 @@ new #[Title('Kategori')] class extends Component {
                 <flux:button variant="ghost" wire:click="$set('showDeleteModal', false)">
                     {{ __('Batal') }}
                 </flux:button>
-                <flux:button variant="danger" wire:click="delete">
+                <flux:button variant="danger" wire:click="delete" wire:loading.attr="disabled" wire:target="delete">
                     {{ __('Hapus') }}
                 </flux:button>
             </div>

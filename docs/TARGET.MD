@@ -104,4 +104,4 @@
 - [x] Feature test pelacakan angsuran
 - [x] Feature test tabungan (setoran, penarikan, validasi saldo)
 - [x] Feature test laporan
-- [ ] Bug fixing & polish UI
+- [x] Bug fixing & polish UI

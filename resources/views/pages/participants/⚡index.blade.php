@@ -114,7 +114,7 @@ new #[Title('Peserta')] class extends Component {
 
         {{-- Search --}}
         <flux:input
-            wire:model.live.debounce="search"
+            wire:model.live.debounce.300ms="search"
             icon="magnifying-glass"
             placeholder="{{ __('Cari nama atau nomor HP...') }}"
             class="max-w-sm"
@@ -191,7 +191,7 @@ new #[Title('Peserta')] class extends Component {
                 <flux:button type="button" variant="ghost" wire:click="$set('showFormModal', false)">
                     {{ __('Batal') }}
                 </flux:button>
-                <flux:button type="submit" variant="primary">
+                <flux:button type="submit" variant="primary" wire:loading.attr="disabled">
                     {{ __('Simpan') }}
                 </flux:button>
             </div>
@@ -207,7 +207,7 @@ new #[Title('Peserta')] class extends Component {
                 <flux:button variant="ghost" wire:click="$set('showDeleteModal', false)">
                     {{ __('Batal') }}
                 </flux:button>
-                <flux:button variant="danger" wire:click="delete">
+                <flux:button variant="danger" wire:click="delete" wire:loading.attr="disabled" wire:target="delete">
                     {{ __('Hapus') }}
                 </flux:button>
             </div>

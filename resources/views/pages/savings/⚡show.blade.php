@@ -207,6 +207,7 @@ new #[Title('Detail Tabungan')] class extends Component {
                 <flux:button
                     type="submit"
                     variant="{{ $txType === 'deposit' ? 'primary' : 'danger' }}"
+                    wire:loading.attr="disabled"
                 >
                     {{ $txType === 'deposit' ? __('Setor') : __('Tarik') }}
                 </flux:button>

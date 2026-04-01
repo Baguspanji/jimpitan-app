@@ -3,50 +3,50 @@
 ## Minggu 1 — Setup & Foundation
 
 ### Setup Project
-- [ ] Setup Laravel project & konfigurasi environment
-- [ ] Konfigurasi database (MySQL/PostgreSQL)
-- [ ] Setup Livewire & Flux UI
-- [ ] Setup autentikasi (Fortify)
+- [x] Setup Laravel project & konfigurasi environment
+- [x] Konfigurasi database (MySQL/PostgreSQL)
+- [x] Setup Livewire & Flux UI
+- [x] Setup autentikasi (Fortify)
 
 ### Database Migrations & Models
-- [ ] Migration `categories`
-- [ ] Migration `items`
-- [ ] Migration `item_packages` (pivot)
-- [ ] Migration `participants`
-- [ ] Migration `orders`
-- [ ] Migration `order_items`
-- [ ] Migration `installments`
-- [ ] Migration `savings`
-- [ ] Migration `saving_transactions`
-- [ ] Model & relasi `Category`
-- [ ] Model & relasi `Item`
-- [ ] Model & relasi `Participant`
-- [ ] Model & relasi `Order`
-- [ ] Model & relasi `OrderItem`
-- [ ] Model & relasi `Installment`
-- [ ] Model & relasi `Saving`
-- [ ] Model & relasi `SavingTransaction`
+- [x] Migration `categories`
+- [x] Migration `items`
+- [x] Migration `item_package` (pivot)
+- [x] Migration `participants`
+- [x] Migration `orders`
+- [x] Migration `order_items`
+- [x] Migration `installments`
+- [x] Migration `savings`
+- [x] Migration `saving_transactions`
+- [x] Model & relasi `Category`
+- [x] Model & relasi `Item`
+- [x] Model & relasi `Participant`
+- [x] Model & relasi `Order`
+- [x] Model & relasi `OrderItem`
+- [x] Model & relasi `Installment`
+- [x] Model & relasi `Saving`
+- [x] Model & relasi `SavingTransaction`
 
 ### Modul Autentikasi
-- [ ] Halaman Login
-- [ ] Logout & manajemen sesi
-- [ ] Proteksi route (middleware auth)
+- [x] Halaman Login
+- [x] Logout & manajemen sesi
+- [x] Proteksi route (middleware auth)
 
 ### Modul Peserta
-- [ ] Halaman daftar peserta
-- [ ] Form tambah peserta (Nama, No HP, Alamat, Catatan)
-- [ ] Form edit peserta
-- [ ] Fitur hapus peserta
-- [ ] Validasi data peserta
+- [x] Halaman daftar peserta
+- [x] Form tambah peserta (Nama, No HP, Alamat, Catatan)
+- [x] Form edit peserta
+- [x] Fitur hapus peserta
+- [x] Validasi data peserta
 
 ---
 
 ## Minggu 2 — Katalog & Order
 
 ### Modul Kategori
-- [ ] Halaman daftar kategori
-- [ ] Form tambah & edit kategori
-- [ ] Fitur hapus kategori
+- [x] Halaman daftar kategori
+- [x] Form tambah & edit kategori
+- [x] Fitur hapus kategori
 
 ### Modul Barang
 - [ ] Halaman daftar barang (dengan filter kategori)

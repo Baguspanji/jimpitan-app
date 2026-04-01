@@ -16,6 +16,15 @@
                         {{ __('Dashboard') }}
                     </flux:sidebar.item>
                 </flux:sidebar.group>
+
+                <flux:sidebar.group :heading="__('Manajemen')" class="grid">
+                    <flux:sidebar.item icon="users" :href="route('participants.index')" :current="request()->routeIs('participants.*')" wire:navigate>
+                        {{ __('Peserta') }}
+                    </flux:sidebar.item>
+                    <flux:sidebar.item icon="tag" :href="route('categories.index')" :current="request()->routeIs('categories.*')" wire:navigate>
+                        {{ __('Kategori') }}
+                    </flux:sidebar.item>
+                </flux:sidebar.group>
             </flux:sidebar.nav>
 
             <flux:spacer />

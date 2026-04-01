@@ -69,7 +69,7 @@ Berikut bayangan *Migration* dan relasinya dalam Laravel:
     * `id`, `name` (Sembako, Snack, dll)
 * `items`
     * `id`, `category_id` (FK), `name`, `unit` (Kg, Dos), `weekly_price`, `type` (regular / package), `bonus_desc` (nullable)
-* `item_packages` (Pivot table untuk mendefinisikan isi paket - *Opsional jika paket tidak perlu direlasikan ke stok barang individual*)
+* `item_package` (Pivot table untuk mendefinisikan isi paket - *Opsional jika paket tidak perlu direlasikan ke stok barang individual*)
     * `package_id` (FK items), `item_id` (FK items)
 * `participants`
     * `id`, `name`, `phone`, `address`

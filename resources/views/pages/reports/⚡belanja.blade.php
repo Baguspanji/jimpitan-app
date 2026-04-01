@@ -47,14 +47,32 @@ new #[Title('Laporan Belanja (Kulakan)')] class extends Component {
     <div class="flex flex-wrap items-center justify-between gap-4">
         <flux:heading size="xl">{{ __('Laporan Belanja (Kulakan)') }}</flux:heading>
 
-        <flux:field class="max-w-xs">
-            <flux:select wire:model.live="filterPeriod" placeholder="{{ __('Semua Periode') }}">
-                <flux:select.option value="">{{ __('Semua Periode') }}</flux:select.option>
-                @foreach ($this->periods as $period)
-                    <flux:select.option value="{{ $period }}">{{ $period }}</flux:select.option>
-                @endforeach
-            </flux:select>
-        </flux:field>
+        <div class="flex flex-wrap items-center gap-3">
+            <flux:field class="max-w-xs">
+                <flux:select wire:model.live="filterPeriod" placeholder="{{ __('Semua Periode') }}">
+                    <flux:select.option value="">{{ __('Semua Periode') }}</flux:select.option>
+                    @foreach ($this->periods as $period)
+                        <flux:select.option value="{{ $period }}">{{ $period }}</flux:select.option>
+                    @endforeach
+                </flux:select>
+            </flux:field>
+
+            <flux:button
+                icon="document-arrow-down"
+                size="sm"
+                :href="route('reports.belanja.pdf', $filterPeriod ? ['period' => $filterPeriod] : [])"
+            >
+                PDF
+            </flux:button>
+            <flux:button
+                icon="table-cells"
+                size="sm"
+                variant="ghost"
+                :href="route('reports.belanja.excel', $filterPeriod ? ['period' => $filterPeriod] : [])"
+            >
+                Excel
+            </flux:button>
+        </div>
     </div>
 
     {{-- Info Banner --}}

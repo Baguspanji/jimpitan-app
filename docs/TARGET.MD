@@ -93,8 +93,8 @@
 - [x] Laporan rekap keuangan (total masuk per minggu & keseluruhan)
 - [x] Laporan rekap belanja/kulakan (total kuantitas per barang)
 - [x] Laporan rekap tabungan (saldo & riwayat per periode)
-- [ ] Ekspor laporan ke PDF
-- [ ] Ekspor laporan ke Excel
+- [x] Ekspor laporan ke PDF
+- [x] Ekspor laporan ke Excel
 
 ### Testing & Bug Fixing
 - [x] Feature test autentikasi

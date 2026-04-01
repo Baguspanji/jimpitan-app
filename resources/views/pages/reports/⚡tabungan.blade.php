@@ -47,6 +47,24 @@ new #[Title('Laporan Tabungan')] class extends Component {
     {{-- Header --}}
     <div class="flex flex-wrap items-center justify-between gap-4">
         <flux:heading size="xl">{{ __('Laporan Tabungan') }}</flux:heading>
+
+        <div class="flex items-center gap-3">
+            <flux:button
+                icon="document-arrow-down"
+                size="sm"
+                :href="route('reports.tabungan.pdf')"
+            >
+                PDF
+            </flux:button>
+            <flux:button
+                icon="table-cells"
+                size="sm"
+                variant="ghost"
+                :href="route('reports.tabungan.excel')"
+            >
+                Excel
+            </flux:button>
+        </div>
     </div>
 
     {{-- Summary Cards --}}

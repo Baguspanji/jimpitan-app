@@ -2,11 +2,14 @@
 
 use App\Http\Controllers\Exports\BelanjaExportController;
 use App\Http\Controllers\Exports\KeuanganExportController;
+use App\Http\Controllers\Exports\SlipExportController;
 use App\Http\Controllers\Exports\TabunganExportController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::livewire('participants', 'pages::participants.index')->name('participants.index');
+    Route::get('participants/{participant}/slip', [SlipExportController::class, 'show'])->name('participants.slip');
+    Route::get('participants/{participant}/slip/{order}', [SlipExportController::class, 'download'])->name('participants.slip.download');
 
     Route::livewire('categories', 'pages::categories.index')->name('categories.index');
 

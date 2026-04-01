@@ -81,6 +81,16 @@ new #[Title('Angsuran')] class extends Component {
     {{-- Header --}}
     <div class="flex items-center justify-between">
         <flux:heading size="xl">{{ __('Kartu Angsuran') }}</flux:heading>
+        @if ($this->orderModel)
+            <flux:button
+                icon="printer"
+                size="sm"
+                variant="ghost"
+                :href="route('participants.slip.download', [$this->orderModel->participant_id, $this->orderModel->id])"
+            >
+                {{ __('Cetak Slip') }}
+            </flux:button>
+        @endif
     </div>
 
     {{-- Order Selector --}}

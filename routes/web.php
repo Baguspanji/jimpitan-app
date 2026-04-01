@@ -1,9 +1,12 @@
 <?php
 
+use App\Http\Controllers\WargaDashboardController;
 use Illuminate\Support\Facades\Route;
 
 // Route::view('/', 'welcome')->name('home');
 Route::redirect('/', '/dashboard')->name('home');
+
+Route::get('/w/{token}', [WargaDashboardController::class, 'show'])->name('warga.dashboard');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::livewire('dashboard', 'pages::dashboard.index')->name('dashboard');

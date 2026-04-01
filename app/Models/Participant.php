@@ -38,4 +38,9 @@ class Participant extends Model
     {
         return $this->hasMany(SavingTransaction::class);
     }
+
+    public function token(): HasOne
+    {
+        return $this->hasOne(ParticipantToken::class);
+    }
 }
